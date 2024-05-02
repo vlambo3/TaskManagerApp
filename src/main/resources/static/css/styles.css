@@ -1,0 +1,120 @@
+/* Estilos CSS básicos */
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+}
+.option-buttons {
+    display: flex;
+    justify-content: center;
+}
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: palevioletred;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#div_task_table{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.task-list {
+    margin-top: 20px;
+}
+.task {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.task button {
+    margin-left: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+tr td {
+    text-align: center;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* para que no se pueda navegar ni para la izquierda ni para la derecha */
+    overflow: hidden;
+    background-color: rgb(40, 40, 40);
+}
+
+li {
+    float: left;
+    border-right: 1px solid rgb(115, 178, 186);
+}
+
+li:last-child{
+    border-right: none;
+    border-left: 1px solid rgb(115, 178, 186);
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 25px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: palevioletred;
+}
+
+li a:hover:not(.active){
+    background-color: pink;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 160px;
+  color: #ee14b4;
+}
+
+.footer-page{
+  text-align: center;
+  color: #bcb0b9;
+  font-size: 80%;
+}
+
+a {
+  color: darkgrey;
+}

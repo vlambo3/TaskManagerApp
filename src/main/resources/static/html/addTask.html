@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="taskList.html">Task List</a></li>
+        <li><a class="active" href="addTask.html">Add Task</a></li>
+    </ul>
+</nav>
+
+
+<div class="container">
+    <h1>Add Task</h1>
+    <div class="row">
+        <div class="col-sm-7" style="background-color:#grey, padding:10px; border-radius:3px">
+            <form id="add_new_task">
+                <div class="form-group">
+                    <label class="control-label" for="title">Title:</label>
+                    <input type="text" class="form-control" id="title"
+                           placeholder="Enter the title"
+                           name="title" required></input>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Description:</label>
+                    <input type="text" class="form-control" id="description"
+                           placeholder="Enter the description"
+                           name="description" required></input>
+                </div>
+
+                <button type="submit" class="btn btn-danger"
+                        id="btn-add-new-premio">Save</button>
+            </form>
+            <div id="response" style="display:none; margin-top:10px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Develop by Vanina ♥</h4>
+
+<footer>
+    <div class="footer-page">
+        <p>For further information, please contact us at: <a href="https://www.linkedin.com/in/vanina-a-godoy/" target="_blank">LinkedIn</a></p>
+        <p>Follow me: <a href="https://github.com/vlambo3" target="_blank">GitHub</a></p>
+    </div>
+</footer>
+
+<script src="../js/post_task.js"></script>
+</body>
+</html>
