@@ -1,8 +1,0 @@
-com.dh.TaskManager
-com.dh.TaskManager.controller
-com.dh.TaskManager.dto
-com.dh.TaskManager.entity
-com.dh.TaskManager.exception
-com.dh.TaskManager.repository
-com.dh.TaskManager.service
-com.dh.TaskManager.service.impl
