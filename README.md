@@ -14,19 +14,19 @@ The application follows an MVC (Model-View-Controller) architecture model. Tasks
 ## Screenshots
 
 ### Main Screen
-![Main Screen](https://github.com/vlambo3/TaskManagerApp/images/main_screen_image.png)
+![Main Screen](https://raw.githubusercontent.com/vlambo3/TaskManagerApp/main/images/main_screen_image.png)
 - This is the main screen of the application. It features two buttons to add tasks and two buttons to list tasks.
 
 ### Add Task Form
-![Add Task Form](https://github.com/vlambo3/TaskManagerApp/images/add_task_form_image.png)
+![Add Task Form](https://raw.githubusercontent.com/vlambo3/TaskManagerApp/main/images/add_task_form_image.png)
 - This form is used to add new tasks. After adding a task, a success or error message is displayed.
 
 ### Task List
-![Task List](https://github.com/vlambo3/TaskManagerApp/images/task_list_image.png)
+![Task List](https://raw.githubusercontent.com/vlambo3/TaskManagerApp/main/images/task_list_image.png)
 - This is the task list screen. It displays tasks in a table format, with options to delete or edit each task.
 
 - ### Update Task
-![Update Task](https://github.com/vlambo3/TaskManagerApp/images/update_task_form_image.png)
+![Update Task](https://raw.githubusercontent.com/vlambo3/TaskManagerApp/main/images/update_task_form_image.png)
 - This form is used to update existing tasks. It is shown if you click on the ID button. Additionally, tasks can be deleted from the list by clicking on the Delete button.
 
 ## Installation and Usage
