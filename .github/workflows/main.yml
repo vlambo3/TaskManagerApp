@@ -38,24 +38,12 @@ jobs:
         name: taskmanagerapp
         path: target
 
-    - uses: actions/checkout\@v3
-      with:
-        repository: philiprbrenan/DataTableText
-        path: dtt
-
-    - uses: actions/checkout\@v3
-      with:
-        repository: philiprbrenan/GithubCrud
-        path: gh
-
-    - name: Cpan
-      run:  sudo cpan install -T Data::Dump  Digest::SHA1
-
-    - name: Upload JAR file
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        perl -Idtt/lib -Igh/lib -M"GitHub::Crud" -e"GitHub::Crud::writeBinaryFileFromFileInCurrentRun('tm.jar', 'target/TaskManager-0.0.1-SNAPSHOT.jar')"
-
-
+    - uses: actions/checkout\@v4
+    - run: |
+        git config user.name "aaa"
+        git config user.email "aaa\@aaa.com"
+        cp target/TaskManager-0.0.1-SNAPSHOT.jar tm.jar
+        git add tm.jar
+        git commit -m "Upload zip"
+        git push
 
