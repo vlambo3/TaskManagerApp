@@ -34,3 +34,12 @@ jobs:
       with:
         name: taskmanagerapp
         path: target
+
+    - name: Release JAR file
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        title: "Task Manager"
+        files: |
+          *.jar        
