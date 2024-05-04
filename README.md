@@ -10,7 +10,7 @@
 
 ## Installation
 
-Download the jar file ```tm.jar``` and run: ```java -jar tm.jar```.  Use the application at http://localhost:8080 
+Download the jar file ```tm.jar``` then run: ```java -jar tm.jar``` at the command line.  Use the application at http://localhost:8080 
 
 ## How it Works
 
