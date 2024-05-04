@@ -18,6 +18,9 @@ jobs:
       with:
         website: jdk.java.net
 
+    - name: Download from Maven
+      run: mvn package
+
     - name: Build with Maven
       run: mvn package
 
