@@ -42,4 +42,4 @@ jobs:
         automatic_release_tag: "latest"
         title: "Task Manager"
         files: |
-          *.jar        
+          target/TaskManager-0.0.1-SNAPSHOT.jar        
