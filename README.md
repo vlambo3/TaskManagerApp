@@ -1,3 +1,5 @@
+# The Vanina Task Manager
+
 ## Features
 
 - **Create:** Create a new task by providing a title and a description.
@@ -5,6 +7,10 @@
 - **Details:** View details of a specific task by its ID.
 - **Update:** Update details of an existing task.
 - **Delete:** Delete an existing task by its ID.
+
+## Installation
+
+Download the jar file ```tm.jar``` and run: ```java -jar tm.jar```.  Use the application at http://localhost:8080 
 
 ## How it Works
 
