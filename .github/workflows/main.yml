@@ -32,12 +32,6 @@ jobs:
       run:
         tree -h
 
-    - name: Upload JAR artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: taskmanagerapp
-        path: target
-
     - uses: actions/checkout\@v4
     - run: |
         git config user.name "aaa"
@@ -47,4 +41,11 @@ jobs:
         git add tm.jar
         git commit -m "Upload zip"
         git push
+
+
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: taskmanagerapp
+        path: target
 
