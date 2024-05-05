@@ -32,7 +32,6 @@ jobs:
       run:
         tree -h
 
-    - uses: actions/checkout\@v4
     - run: |
         git config user.name "aaa"
         git config user.email "aaa\@aaa.com"
