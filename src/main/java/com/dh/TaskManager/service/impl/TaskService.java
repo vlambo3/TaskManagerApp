@@ -40,14 +40,14 @@ public class TaskService implements ITaskService {
     /**
      * Crea una nueva tarea utilizando los datos proporcionados en el objeto TaskRequestDTO.
      *
-     * @param taskDTO El objeto TaskRequestDTO que contiene los datos de la tarea a crear.
+     * @param taskRequestDTO El objeto TaskRequestDTO que contiene los datos de la tarea a crear.
      * @return TaskResponseDTO El objeto TaskResponseDTO correspondiente a la tarea creada.
      */
     @Override
-    public TaskResponseDTO createTask(TaskRequestDTO taskDTO) {
-        Task task = objectMapper.convertValue(taskDTO, Task.class);
-        Task taskSaved = taskRepository.save(task);
-        return objectMapper.convertValue(taskSaved, TaskResponseDTO.class);
+    public TaskResponseDTO createTask(TaskRequestDTO taskRequestDTO) {
+        Task task = mapToEntity(taskRequestDTO);
+        taskRepository.save(task);
+        return mapToDTO(task);
     }
 
     /**
@@ -59,13 +59,10 @@ public class TaskService implements ITaskService {
      */
     @Override
     public TaskResponseDTO getTaskById(Long id) {
-        Task task = taskRepository.findById(id)
-                .orElse(null);
-
-        if (task != null) {
-            return mapToDTO(task);
-        }
-        throw new NotFoundException(NOT_FOUND_MESSAGE);
+        Task task = taskRepository.findById(id).orElseThrow(
+                () -> new NotFoundException(NOT_FOUND_MESSAGE)
+        );
+        return mapToDTO(task);
 
     }
 
@@ -81,7 +78,7 @@ public class TaskService implements ITaskService {
         return taskRepository.findAll()
                 .stream() // Inicia un flujo de datos sobre la lista de tareas
                 .map(this::mapToDTO) // Mapea cada tarea a un objeto TaskResponseDTO utilizando un método de referencia
-                .collect(Collectors.toList()); // Recopila los resultados en una lista
+                .toList(); // Recopila los resultados en una lista
     }
 
     /**
@@ -96,39 +93,31 @@ public class TaskService implements ITaskService {
      * TaskRequestToUpdateDTO. Si la tarea existe, se actualizan sus datos con los valores proporcionados
      * en el objeto TaskRequestToUpdateDTO, y luego se guarda la tarea actualizada en la base de datos.
      *      *
-     * @param taskRequestDTO El objeto TaskRequestToUpdateDTO que contiene los datos actualizados de la tarea.
+     * @param taskRequestToUpdateDTO El objeto TaskRequestToUpdateDTO que contiene los datos actualizados de la tarea.
      * @return TaskResponseDTO El objeto TaskResponseDTO correspondiente a la tarea actualizada.
      * @throws NotFoundException Si no se encuentra ninguna tarea con el identificador proporcionado.
      */
     @Override
     @Transactional
-    public TaskResponseDTO updateTask(TaskRequestToUpdateDTO taskRequestDTO) {
-        Task task = taskRepository.findById(taskRequestDTO.getId())
-                .orElse(null);
-
-        if (task != null) {
-            task.setTitle(taskRequestDTO.getTitle());
-            task.setDescription(taskRequestDTO.getDescription());
-
-            taskRepository.save(task);
-            return mapToDTO(task);
-        }
-        throw new NotFoundException(NOT_FOUND_MESSAGE);
+    public TaskResponseDTO updateTask(TaskRequestToUpdateDTO taskRequestToUpdateDTO) {
+        getTaskById(taskRequestToUpdateDTO.getId());
+        return mapToDTO(taskRepository.save(mapToEntity(taskRequestToUpdateDTO)));
     }
 
+    /**
+     * Elimina una tarea por su identificador único.
+     *
+     * @param id Identificador único de la tarea a eliminar.
+     *
+     * @throws NotFoundException Si no se encuentra ninguna tarea con el identificador proporcionado.     *
+     */
     @Override
     public void deleteTaskById(Long id) {
         // Busca la tarea en la base de datos utilizando el identificador proporcionado
-        Task task = taskRepository.findById(id)
-                .orElse(null);
+        getTaskById(id);
 
         // Si la tarea existe, actualiza sus datos y guarda la tarea actualizada en la base de datos
-        if (task != null) {
-            taskRepository.delete(task);
-        }
-
-        // Si la tarea no existe, lanza una excepción NotFoundException
-        throw new NotFoundException(NOT_FOUND_MESSAGE);
+        taskRepository.deleteById(id);
     }
 
     /**
@@ -142,12 +131,22 @@ public class TaskService implements ITaskService {
     }
 
     /**
-     * Convierte un objeto de tipo TaskResponseDTO a un objeto de tipo Task.
+     * Convierte un objeto de tipo TaskRequestDTO a un objeto de tipo Task.
      *
-     * @param taskResponseDTO El objeto de tipo TaskResponseDTO a convertir.
+     * @param taskRequestDTO El objeto de tipo TaskRequestDTO a convertir.
      * @return Task El objeto Task resultante de la conversión.
      */
-    private Task mapToEntity(TaskResponseDTO taskResponseDTO) {
-        return objectMapper.convertValue(taskResponseDTO, Task.class);
+    private Task mapToEntity(TaskRequestDTO taskRequestDTO) {
+        return objectMapper.convertValue(taskRequestDTO, Task.class);
+    }
+
+    /**
+     * Convierte un objeto de tipo TaskRequestDTO a un objeto de tipo Task.
+     *
+     * @param taskRequestUpdateDTO El objeto de tipo TaskRequestDTO a convertir.
+     * @return Task El objeto Task resultante de la conversión.
+     */
+    private Task mapToEntity(TaskRequestToUpdateDTO taskRequestUpdateDTO) {
+        return objectMapper.convertValue(taskRequestUpdateDTO, Task.class);
     }
 }
