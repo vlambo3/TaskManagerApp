@@ -18,6 +18,9 @@ jobs:
       with:
         website: jdk.java.net
 
+    - name: Download Java dependencies
+      run: mvn package
+
     - name: Build with Maven
       run: mvn package
 
@@ -33,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: taskmanagerapp
-        path: build/libs/my-app.jar
+        path: target
